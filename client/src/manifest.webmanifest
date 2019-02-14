@@ -47,5 +47,10 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ]
+  ],
+   "external": {
+      "urls": [
+        {"url": "https://fonts.googleapis.com/icon?family=Material+Icons"}
+      ]
+    }
 }
