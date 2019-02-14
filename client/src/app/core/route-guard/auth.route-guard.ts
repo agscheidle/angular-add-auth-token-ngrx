@@ -1,8 +1,15 @@
 import { Injectable } from "@angular/core";
 import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot } from "@angular/router";
 import { select, Store } from "@ngrx/store";
-import { Observable } from "rxjs";
-import { first, map } from "rxjs/operators";
+import {
+    Observable,
+    of
+} from "rxjs";
+import {
+    catchError,
+    first,
+    map
+} from "rxjs/operators";
 import * as fromState from "../../core/state/";
 import * as AuthActions from "../state/auth/auth.action";
 
@@ -29,7 +36,12 @@ export class AuthRouteGuard implements CanActivate {
                 console.log(`canActivate( Yes. Navigate the user to the requested route. )`);
                 return true;
             }),
-            first()
+            first(),
+            catchError((err => {
+                this.store$.dispatch(new AuthActions.NavigateToLogin());
+                console.error(`canActivate error ${err}`);
+                return of(false);
+            }))
         );
     }
 
