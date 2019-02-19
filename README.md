@@ -44,9 +44,31 @@ wasi$ npm run server-auth
 
 Navigate to `http://localhost:4300/`. The app will automatically reload if you change any of the source files.
 
-### WIP: With Docker
+### Login or Register
 
-**NOTE**: This assumes you have Docker installed locally.
+You can login with the following credentials or click the "Register" button and create your own user that's persisted for the 
+current session:
+
+**User 1**
+
+* username: `tom.brady@patriots.com`
+* password: `goat`
+
+**User 2**
+
+* username: `test@test.com`
+* password: `test`
+
+**User 3**
+
+* username: `admin@admin.com`
+* password: `admin`
+
+**NOTE**: Additional users can be added to `server/database/mock/users.json`.
+
+### With Docker
+
+**NOTE**: This assumes you have [Docker installed and running locally](https://www.docker.com/products/docker-desktop).
 
 Open up a terminal and enter the following commands: 
 
@@ -54,8 +76,11 @@ Open up a terminal and enter the following commands:
 wasi$ git clone https://github.com/webappsolution/angular-add-auth-token-ngrx.git
 wasi$ git checkout feature/step-3-dockerize
 wasi$ cd docker
-wasi$ docker stack deploy -c ./local.yml blog
+wasi$ docker-compose build && docker-compose up -d
 ```
+
+If you know how to build docker images you can also edit and use the Docker stack YAML file to run the app locally: 
+`docker stack deploy -c ./local.yml blog`
 
 ## Code scaffolding
 

@@ -34,19 +34,6 @@ export class LoginContainer implements OnInit {
      */
     public pending$: Observable<boolean>;
 
-    /**
-     * Constructor.
-     */
-    public constructor(private store$: Store<any>) {
-    }
-
-    /**
-     * Initialize the component.
-     */
-    public ngOnInit() {
-        this.error$ = this.store$.pipe(select(fromState.getError));
-        this.pending$ = this.store$.pipe(select(fromState.getPending));
-    }
 
     /**
      * Attempt to login.
@@ -60,5 +47,19 @@ export class LoginContainer implements OnInit {
      */
     public register(event: any) {
         this.store$.dispatch(new AuthActions.NavigateToRegister());
+    }
+
+    /**
+     * Constructor.
+     */
+    public constructor(private store$: Store<any>) {
+    }
+
+    /**
+     * Initialize the component.
+     */
+    public ngOnInit() {
+        this.error$ = this.store$.pipe(select(fromState.getError));
+        this.pending$ = this.store$.pipe(select(fromState.getPending));
     }
 }

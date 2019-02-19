@@ -5,11 +5,13 @@ version: "3.7"
 services:
 
   client: # name of the first service
-    image: gscheidleinc/angular-app-blog # specify the directory of the Dockerfile
+    build: ../client
+    image: gscheidleinc/client-blog
     ports:
       - "4300:80" # specify port mapping
 
   server: # name of the second service
-    image: gscheidleinc/node-app-blog # specify the directory of the Dockerfile
+    build: ../server
+    image: gscheidleinc/server-blog # specify the directory of the Dockerfile
     ports:
       - "4301:4301" #specify ports mapping
